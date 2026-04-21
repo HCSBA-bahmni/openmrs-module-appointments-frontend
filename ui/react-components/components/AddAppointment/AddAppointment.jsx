@@ -184,6 +184,12 @@ const AddAppointment = props => {
     const repeatsOn = intl.formatMessage({
         id: 'REPEATS_ON_LABEL', defaultMessage: "Repeats on"
     });
+    const chooseOption = intl.formatMessage({
+        id: 'CHOOSE_AN_OPTION_LABEL', defaultMessage: 'Choose an option'
+    });
+    const appointmentDateLabel = intl.formatMessage({
+        id: 'APPOINTMENT_DATE', defaultMessage: 'Appointment date'
+    });
     const successMessage = intl.formatMessage({
         id:'APPOINTMENT_CREATED_MESSAGE', defaultMessage:"Appointment Created!"
     })
@@ -669,7 +675,7 @@ const AddAppointment = props => {
                                 }}
                                 minDate={moment().format("MM-DD-YYYY")}
                                 isRequired={requiredFields.recurringStartDate}
-                                title={"Appointment start date"}/>
+                                title={appointmentDateLabel}/>
                             <ErrorMessage message={errors.startDateError ? errorTranslations.dateErrorMessage : undefined}/>
                         </div>
                         <div style={{display: "flex"}}>
@@ -733,7 +739,7 @@ const AddAppointment = props => {
                                 </div>
                                 <div style={{minWidth: "120px", verticalAlign: "bottom"}}>
                                     <Dropdown id={"recurrence-type"} options={recurringTypeOptions}
-                                              label={"Choose an option"}
+                                              placeholder={chooseOption}
                                               selectedValue={recurringTypeOptions[0]}
                                               onChange={event => {
                                                   updateAppointmentDetails({recurrenceType: event.selectedItem.value});

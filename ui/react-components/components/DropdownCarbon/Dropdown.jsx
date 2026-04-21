@@ -8,6 +8,7 @@ const DropdownCarbon = (props) => {
     const {
         options,
         placeholder,
+        label,
         onChange,
         isDisabled,
         selectedValue,
@@ -16,6 +17,9 @@ const DropdownCarbon = (props) => {
         isRequired
     } = props;
     const title = titleText && <Title text={titleText} isRequired={isRequired}/>
+    const dropdownLabel = placeholder || label || props.intl.formatMessage({
+        id: 'CHOOSE_AN_OPTION_LABEL', defaultMessage: 'Choose an option'
+    });
     return (
         <div
             data-testid="select dropdown"
@@ -27,7 +31,7 @@ const DropdownCarbon = (props) => {
                 onChange={onChange}
                 titleText={title}
                 disabled={isDisabled}
-                label={"Choose an option"}
+                label={dropdownLabel}
                 initialSelectedItem={selectedValue}
             />
         </div>
@@ -39,6 +43,7 @@ export default injectIntl(DropdownCarbon);
 DropdownCarbon.propTypes = {
     options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
     placeholder: PropTypes.string,
+    label: PropTypes.string,
     onChange: PropTypes.func,
     isDisabled: PropTypes.bool
 };

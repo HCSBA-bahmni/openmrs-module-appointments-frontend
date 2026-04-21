@@ -10,6 +10,9 @@ const AppointmentCategory = (props) => {
     const placeHolder = intl.formatMessage({
         id: 'PLACEHOLDER_APPOINTMENT_CREATE_APPOINTMENT_CATEGORY', defaultMessage: "Appointment category"
     });
+    const chooseOption = intl.formatMessage({
+        id: 'CHOOSE_AN_OPTION_LABEL', defaultMessage: 'Choose an option'
+    });
     const title = <Title text={placeHolder} isRequired={isRequired}/>
     const filterItems = data => {
         return data.item.label.toLowerCase().includes(data.inputValue.toLowerCase());
@@ -19,7 +22,7 @@ const AppointmentCategory = (props) => {
         <ComboBox id="service-search"
                   items={priorityOptionsList}
                   titleText={title}
-                  placeholder={"Choose an option"}
+                  placeholder={chooseOption}
                   onChange={onChange}
                   isDisabled={isDisabled}
                   autoFocus={!specialityEnabled && autoFocus}

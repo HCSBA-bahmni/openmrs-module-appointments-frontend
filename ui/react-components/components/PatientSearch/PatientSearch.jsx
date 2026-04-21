@@ -73,7 +73,7 @@ export const PatientSearch = (props) => {
         }
     }, [isLoading])
     const label = <Title
-        text={intl.formatMessage({id: 'APPOINTMENT_PATIENT_SEARCH_LABEL', defaultMessage: 'Search Patient'})}
+        text={intl.formatMessage({id: 'APPOINTMENT_CREATE_SEARCH_PATIENT', defaultMessage: 'Search Patient'})}
         isRequired={true}/>
     return <ComboBox
         id={"PatientSearch"}

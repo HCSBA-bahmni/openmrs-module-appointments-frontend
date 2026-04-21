@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {injectIntl} from "react-intl";
-import {TELECONSULTATION_APPOINTMENT} from "../../constants";
 import { Checkbox } from 'carbon-components-react';
 
 
 
 const AppointmentType = props => {
 
-    const {onChange, appointmentType, isTeleconsultation, isTeleconsultationDisabled } = props;
+    const {intl, onChange, appointmentType, isTeleconsultation, isTeleconsultationDisabled } = props;
 
     const isVirtual = () => {
         return appointmentType === "Virtual" || isTeleconsultation;
@@ -20,13 +19,14 @@ const AppointmentType = props => {
                 id="teleconsultation-checkbox"
                 onChange={onChange}
                 defaultChecked={isVirtual()}
-                labelText={TELECONSULTATION_APPOINTMENT}
+                labelText={intl.formatMessage({id: 'TELECONSULTATION_APPOINTMENT', defaultMessage: 'Teleconsultation'})}
                 disabled={isTeleconsultationDisabled}
             />
     </div>)
 };
 
 AppointmentType.propTypes = {
+    intl: PropTypes.object.isRequired,
     onChange: PropTypes.func,
     appointmentType: PropTypes.string,
     isTeleconsultation: PropTypes.bool,

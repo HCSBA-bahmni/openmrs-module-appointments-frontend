@@ -8,6 +8,9 @@ const AppointmentNotes = (props) => {
     const placeHolder = intl.formatMessage({
         id: 'PLACEHOLDER_APPOINTMENT_NOTES_MAX_LENGTH', defaultMessage: 'Maximum of 250 characters'
     });
+    const label = intl.formatMessage({
+        id: 'APPOINTMENT_CREATE_NOTES', defaultMessage: 'Notes'
+    });
     const [notes, setNotes] = useState(value);
     useEffect(()=>{
         setNotes(value);
@@ -17,7 +20,7 @@ const AppointmentNotes = (props) => {
     }
     return (<div data-testid="notes">
             <TextArea value={notes || ""} onChange={handleChange} onBlur={onChange}
-                      data-testid="notes" maxCount={250} labelText={"Notes"} enableCounter={true}
+                      data-testid="notes" maxCount={250} labelText={label} enableCounter={true}
                       placeholder={placeHolder}/>
         </div>
     )

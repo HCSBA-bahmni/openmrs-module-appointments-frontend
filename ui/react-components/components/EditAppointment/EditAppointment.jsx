@@ -188,6 +188,9 @@ const EditAppointment = props => {
     const repeatsOn = intl.formatMessage({
         id: 'REPEATS_ON_LABEL', defaultMessage: "Repeats on"
     })
+    const appointmentDateLabel = intl.formatMessage({
+        id: 'APPOINTMENT_DATE', defaultMessage: 'Appointment date'
+    });
 
     const statusTitleText = <Title text={statusPlaceHolder} isRequired={requiredFields.status}/>
     const onTitleText = <Title text={ends+" " + on.toLowerCase()} isRequired={requiredFields.ends}/>
@@ -688,7 +691,7 @@ const EditAppointment = props => {
                             isDisabled={componentsDisableStatus.startDate}
                             minDate={getMinDate(appointmentDetails.appointmentDate)}
                             isRequired={requiredFields.appointmentStartDate}
-                            title={"Appointment date"}/>
+                            title={appointmentDateLabel}/>
                         <ErrorMessage message={errors.appointmentDateError ? errorTranslations.dateErrorMessage : undefined}/>
                     </div>
                     <div style={{display: "flex"}}>
