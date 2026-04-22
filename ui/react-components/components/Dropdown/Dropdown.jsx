@@ -13,13 +13,16 @@ const Dropdown = (props) => {
   const {
     options,
     placeholder,
+    intl,
     onChange,
     isDisabled,
     selectedValue,
     autoFocus,
     isRequired,
     onInputChange,
-    placeHolderMessage = "Choose an option",
+    placeHolderMessage = intl.formatMessage({
+      id: 'CHOOSE_AN_OPTION_LABEL', defaultMessage: 'Choose an option'
+    }),
   } = props;
   const filterItems = data => {
     return data.item.label.toLowerCase().includes(data.inputValue.toLowerCase());
@@ -68,6 +71,7 @@ const Dropdown = (props) => {
 export default injectIntl(Dropdown);
 
 Dropdown.propTypes = {
+  intl: PropTypes.object.isRequired,
   options: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
