@@ -74,6 +74,20 @@ angular.module('bahmni.appointments')
                         appointmentCommonService.isUserAllowedToPerformEdit(appointmentProviders, currentUserPrivileges, currentProviderUuId);
                 };
 
+                popUpScope.translateAppointmentStatus = function (appointmentStatus) {
+                    var statusTranslationKeyMap = {
+                        Scheduled: 'PLACEHOLDER_APPOINTMENT_STATUS_SCHEDULED',
+                        WaitList: 'PLACEHOLDER_APPOINTMENT_STATUS_WAITLIST',
+                        CheckedIn: 'CHECK_IN_APPOINTMENT',
+                        Completed: 'COMPLETE_APPOINTMENT',
+                        Missed: 'MISSED_APPOINTMENT',
+                        Cancelled: 'CANCEL_APPOINTMENT'
+                    };
+
+                    var translationKey = statusTranslationKeyMap[appointmentStatus];
+                    return translationKey ? $translate.instant(translationKey) : appointmentStatus;
+                };
+
                 var changeStatus = function (appointment, toStatus, onDate, closeConfirmBox, applyForAll) {
                     var message = $translate.instant('APPOINTMENT_STATUS_CHANGE_SUCCESS_MESSAGE', {
                         toStatus: toStatus

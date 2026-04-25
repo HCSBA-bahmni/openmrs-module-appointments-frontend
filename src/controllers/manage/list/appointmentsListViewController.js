@@ -141,9 +141,17 @@ angular.module('bahmni.appointments')
             };
 
             $scope.translateAppointmentStatus = function (appointmentStatus) {
-                if(appointmentStatus === "WaitList")
-                    return $translate.instant("APPOINTMENT_WAITLIST");
-                return appointmentStatus;
+                var statusTranslationKeyMap = {
+                    Scheduled: 'PLACEHOLDER_APPOINTMENT_STATUS_SCHEDULED',
+                    WaitList: 'PLACEHOLDER_APPOINTMENT_STATUS_WAITLIST',
+                    CheckedIn: 'CHECK_IN_APPOINTMENT',
+                    Completed: 'COMPLETE_APPOINTMENT',
+                    Missed: 'MISSED_APPOINTMENT',
+                    Cancelled: 'CANCEL_APPOINTMENT'
+                };
+
+                var translationKey = statusTranslationKeyMap[appointmentStatus];
+                return translationKey ? $translate.instant(translationKey) : appointmentStatus;
             }
 
             $scope.getCurrentTabName = function(){
@@ -351,7 +359,8 @@ angular.module('bahmni.appointments')
                     filteredAppointments: $scope.filteredAppointments,
                     startDate: $stateParams.viewDate,
                     enableServiceTypes: $scope.enableServiceTypes,
-                    enableSpecialities: $scope.enableSpecialities
+                    enableSpecialities: $scope.enableSpecialities,
+                    translateAppointmentStatus: $scope.translateAppointmentStatus
                 });
             };
 

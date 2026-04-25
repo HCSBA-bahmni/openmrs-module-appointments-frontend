@@ -73,7 +73,7 @@ module.exports = {
             output: __dirname + '/dist',
             inject: 'head'
         }),
-        new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/),
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es|pt-br/),
         new CopyPlugin([
             {from: __dirname + '/ui/dist/AppointmentStatusHandler.js', to: distDirPath + '/AppointmentStatusHandler.js'},
             {from: __dirname + '/i18n/', to: distDirPath + '/i18n'},

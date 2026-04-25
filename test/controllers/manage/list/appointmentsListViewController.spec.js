@@ -805,7 +805,8 @@ describe('AppointmentsListViewController', function () {
                 filteredAppointments: scope.filteredAppointments,
                 startDate: stateparams.viewDate,
                 enableServiceTypes: scope.enableServiceTypes,
-                enableSpecialities: scope.enableSpecialities
+                enableSpecialities: scope.enableSpecialities,
+                translateAppointmentStatus: jasmine.any(Function)
             });
     });
 
@@ -866,7 +867,8 @@ describe('AppointmentsListViewController', function () {
                 filteredAppointments: scope.filteredAppointments,
                 startDate: stateparams.viewDate,
                 enableServiceTypes: scope.enableServiceTypes,
-                enableSpecialities: scope.enableSpecialities
+                enableSpecialities: scope.enableSpecialities,
+                translateAppointmentStatus: jasmine.any(Function)
             });
     });
 
